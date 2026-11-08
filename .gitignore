@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Environment variables (secrets!) - only the .example files are committed
+.env
+.env.*
+!.env.example
+
+# Build output
+dist/
+build/
+
+# Personal working notes for Claude Code
+CLAUDE.md
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db
