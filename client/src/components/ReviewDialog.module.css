@@ -1,0 +1,55 @@
+.confidence {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.confidence legend {
+  margin-block-end: var(--space-2);
+  font-weight: 500;
+}
+
+.levels {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.level {
+  flex: 1;
+}
+
+/* The radio itself is hidden; the number box is what you click */
+.level input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.level span {
+  display: grid;
+  place-items: center;
+  height: 2.75rem;
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.level input:checked + span {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.level input:focus-visible + span {
+  outline: 2px solid var(--color-accent-dark);
+  outline-offset: 2px;
+}
+
+.scale {
+  display: flex;
+  justify-content: space-between;
+  margin-block-start: var(--space-1);
+  color: var(--color-gray-600);
+  font-size: 0.875rem;
+}
