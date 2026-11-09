@@ -5,6 +5,14 @@ export async function findTasksByTopic(topicId) {
   return rows;
 }
 
+export async function taskBelongsToTopic(taskId, topicId) {
+  const { rows } = await query(
+    'SELECT id FROM tasks WHERE id = $1 AND topic_id = $2',
+    [taskId, topicId],
+  );
+  return rows.length > 0;
+}
+
 export async function createTask(topicId, { title, description, type, difficulty, link }, createdBy) {
   const { rows } = await query(
     `INSERT INTO tasks (topic_id, title, description, type, difficulty, link, created_by)

@@ -6,6 +6,10 @@ import { authRoutes } from './routes/authRoutes.js';
 import { categoriesRoutes } from './routes/categoriesRoutes.js';
 import { categoryTopicsRoutes, topicsRoutes } from './routes/topicsRoutes.js';
 import { topicTasksRoutes, tasksRoutes } from './routes/tasksRoutes.js';
+import { topicReviewLogsRoutes } from './routes/reviewLogsRoutes.js';
+import { weekRoutes } from './routes/weekRoutes.js';
+import { staleTopicsRoutes } from './routes/staleTopicsRoutes.js';
+import { statsRoutes } from './routes/statsRoutes.js';
 
 export const app = express();
 
@@ -24,8 +28,12 @@ app.use('/api/auth', authRoutes);
 app.use('/api/categories/:categoryId/topics', categoryTopicsRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/topics/:topicId/tasks', topicTasksRoutes);
+app.use('/api/topics/:topicId/reviews', topicReviewLogsRoutes);
 app.use('/api/topics', topicsRoutes);
 app.use('/api/tasks', tasksRoutes);
+app.use('/api/week', weekRoutes);
+app.use('/api/stale-topics', staleTopicsRoutes);
+app.use('/api/stats', statsRoutes);
 
 // Must stay last: they handle whatever the routes above did not
 app.use(notFound);
