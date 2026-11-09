@@ -1,0 +1,117 @@
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: var(--space-3);
+  background: var(--color-white);
+}
+
+.card {
+  width: 100%;
+  max-width: 24rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.header {
+  background: var(--gradient-header);
+  color: var(--color-white);
+  padding: var(--space-4);
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+.header p {
+  margin: var(--space-1) 0 0;
+  color: var(--color-gray-300);
+}
+
+.tabs {
+  display: flex;
+  border-block-end: 1px solid var(--color-gray-100);
+}
+
+.tab,
+.activeTab {
+  flex: 1;
+  padding: var(--space-3);
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--color-gray-600);
+  border-block-end: 3px solid transparent;
+}
+
+.activeTab {
+  color: var(--color-black);
+  border-block-end-color: var(--color-accent);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-weight: 500;
+}
+
+.field input {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius);
+}
+
+.field input:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -1px;
+  border-color: transparent;
+}
+
+.error {
+  padding: var(--space-2) var(--space-3);
+  border-inline-start: 4px solid var(--color-danger);
+  background: #fdecea;
+  color: var(--color-danger);
+}
+
+.error p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.error ul {
+  margin: var(--space-1) 0 0;
+  padding-inline-start: var(--space-4);
+}
+
+.submit {
+  padding: var(--space-2) var(--space-3);
+  border: none;
+  border-radius: var(--radius);
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.submit:hover:not(:disabled) {
+  background: var(--color-accent-dark);
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
