@@ -20,6 +20,7 @@ function groupByCategory(rows) {
       id: row.topic_id,
       name: row.topic_name,
       reviewedThisWeek: row.reviewed_this_week,
+      lastReviewedAt: row.last_reviewed_at,
     });
   }
 

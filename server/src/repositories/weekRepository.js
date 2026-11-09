@@ -9,7 +9,11 @@ export async function findWeekPlan(userId) {
               WHERE r.topic_id = t.id
                 AND r.user_id = $1
                 AND r.reviewed_at >= current_week_start()
-            ) AS reviewed_this_week
+            ) AS reviewed_this_week,
+            (
+              SELECT MAX(r.reviewed_at) FROM review_logs r
+              WHERE r.topic_id = t.id AND r.user_id = $1
+            ) AS last_reviewed_at
      FROM categories c
      LEFT JOIN topics t ON t.category_id = c.id AND t.archived_at IS NULL
      WHERE c.archived_at IS NULL
