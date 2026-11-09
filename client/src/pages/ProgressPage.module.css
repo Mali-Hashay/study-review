@@ -1,0 +1,134 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.page h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: var(--color-gray-900);
+}
+
+.sections {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.section {
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--gradient-header);
+  color: var(--color-white);
+}
+
+.sectionHeader h2 {
+  font-size: 1.25rem;
+}
+
+.daysPicker {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.9rem;
+}
+
+.daysPicker select {
+  padding: var(--space-1) var(--space-2);
+  border: none;
+  border-radius: var(--radius);
+}
+
+.section > p {
+  margin: 0;
+  padding: var(--space-3);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row,
+.confidenceRow {
+  padding: var(--space-2) var(--space-3);
+  border-block-start: 1px solid var(--color-gray-100);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.muted {
+  color: var(--color-gray-600);
+  font-size: 0.875rem;
+}
+
+.never {
+  color: var(--color-danger);
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.confidenceRow {
+  display: grid;
+  grid-template-columns: minmax(6rem, 1fr) 2fr auto;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.topicName {
+  overflow-wrap: anywhere;
+}
+
+.bar {
+  height: 0.75rem;
+  border-radius: 999px;
+  background: var(--color-gray-100);
+  overflow: hidden;
+}
+
+.fill,
+.weakFill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--color-accent);
+}
+
+.weakFill {
+  background: var(--color-gray-600);
+}
+
+.score {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.section > .legend {
+  padding-block-start: 0;
+  color: var(--color-gray-600);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 900px) {
+  .sections {
+    grid-template-columns: 1fr;
+  }
+}
