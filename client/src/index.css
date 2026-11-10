@@ -13,6 +13,7 @@
   --color-page-tint: var(--color-gray-100); /* same gray as the quote cards; was #f6f7f7 */
 
   --shadow-card: 0 1px 3px rgb(0 0 0 / 0.08), 0 4px 14px rgb(0 0 0 / 0.06);
+  --shadow-card-hover: 0 4px 8px rgb(0 0 0 / 0.08), 0 12px 28px rgb(0 0 0 / 0.12);
 
 
   --font-family: 'Heebo', system-ui, sans-serif;
@@ -54,4 +55,26 @@ textarea {
 
 a {
   color: var(--color-accent-dark);
+}
+
+/* Hover "lift" for cards: add class="lift" (global, so every page can use it) */
+.lift {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lift {
+    transition: none;
+  }
+
+  .lift:hover {
+    transform: none;
+  }
 }

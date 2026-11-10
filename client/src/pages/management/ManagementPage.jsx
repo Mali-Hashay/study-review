@@ -86,7 +86,7 @@ export function ManagementPage() {
           {STUDY_DAYS.map((day) => {
             const dayCategories = categories.filter((category) => category.day_of_week === day)
             return (
-              <section key={day} className={styles.day}>
+              <section key={day} className={`${styles.day} lift`}>
                 <header className={styles.dayHeader}>
                   <h2>יום {DAY_NAMES[day]}</h2>
                   <button type="button" className={styles.addButton} onClick={() => openNew(day, dayCategories)}>

@@ -74,7 +74,7 @@ export function ProgressPage() {
 
 function StatTile({ value, label }) {
   return (
-    <div className={styles.tile}>
+    <div className={`${styles.tile} lift`}>
       <span className={styles.tileValue}>{value ?? '–'}</span>
       <span className={styles.tileLabel}>{label}</span>
     </div>
@@ -117,7 +117,7 @@ function StaleTopics({ topics }) {
   return (
     <div className={styles.groups}>
       {groupByCategory(topics).map((category) => (
-        <div key={category.id} className={styles.group}>
+        <div key={category.id} className={`${styles.group} lift`}>
           <h3>
             {category.name} <span className={styles.muted}>· {DAY_NAMES[category.dayOfWeek]}</span>
           </h3>

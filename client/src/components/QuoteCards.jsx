@@ -18,7 +18,7 @@ export function QuoteCards() {
   return (
     <div className={styles.quotes}>
       {QUOTES.map((quote) => (
-        <figure key={quote.text} className={styles.quote}>
+        <figure key={quote.text} className={`${styles.quote} lift`}>
           <blockquote>{quote.text}</blockquote>
           <figcaption>{quote.author}</figcaption>
         </figure>

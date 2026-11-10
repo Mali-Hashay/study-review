@@ -16,6 +16,10 @@
   color: var(--color-gray-900);
 }
 
+.smile {
+  color: var(--color-accent);
+}
+
 .summary {
   color: var(--color-gray-600);
 }

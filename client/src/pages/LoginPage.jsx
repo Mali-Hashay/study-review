@@ -46,7 +46,9 @@ export function LoginPage() {
       <div className={styles.card}>
         <header className={styles.header}>
           <h1>Study&amp;Review</h1>
-          <p>הדרך שלנו לעבודת החלומות</p>
+          <p>
+            הדרך שלנו לעבודת החלומות <bdi dir="ltr" className={styles.smile}>:)</bdi>
+          </p>
         </header>
 
         <div className={styles.tabs} role="tablist">
