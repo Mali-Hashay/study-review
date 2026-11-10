@@ -21,6 +21,7 @@ function groupByCategory(rows) {
       name: row.topic_name,
       reviewedThisWeek: row.reviewed_this_week,
       lastReviewedAt: row.last_reviewed_at,
+      taskCount: row.task_count,
     });
   }
 

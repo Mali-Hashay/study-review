@@ -2,7 +2,12 @@ import { query, withTransaction } from '../db/pool.js';
 
 export async function findActiveTopicsByCategory(categoryId) {
   const { rows } = await query(
-    'SELECT * FROM topics WHERE category_id = $1 AND archived_at IS NULL ORDER BY order_index, id',
+    `SELECT t.*, COUNT(ta.id)::int AS task_count
+     FROM topics t
+     LEFT JOIN tasks ta ON t.id = ta.topic_id
+     WHERE t.category_id = $1 AND t.archived_at IS NULL
+     GROUP BY t.id
+     ORDER BY t.order_index, t.id`,
     [categoryId],
   );
   return rows;

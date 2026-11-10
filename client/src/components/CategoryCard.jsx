@@ -1,6 +1,10 @@
 import { describeLastReviewed } from '../utils/lastReviewed.js'
 import styles from './CategoryCard.module.css'
 
+function describeTaskCount(count) {
+  return count === 1 ? 'משימה אחת' : `${count} משימות`
+}
+
 export function CategoryCard({ category, onToggle }) {
   return (
     <section className={styles.card}>
@@ -27,9 +31,14 @@ export function CategoryCard({ category, onToggle }) {
                 <span className={topic.reviewedThisWeek ? styles.doneName : undefined}>
                   {topic.name}
                 </span>
-                {!topic.reviewedThisWeek && (
+                {(!topic.reviewedThisWeek || topic.taskCount > 0) && (
                   <span className={styles.lastReviewed}>
-                    {describeLastReviewed(topic.lastReviewedAt)}
+                    {[
+                      !topic.reviewedThisWeek && describeLastReviewed(topic.lastReviewedAt),
+                      topic.taskCount > 0 && describeTaskCount(topic.taskCount),
+                    ]
+                      .filter(Boolean)
+                      .join(' · ')}
                   </span>
                 )}
               </div>

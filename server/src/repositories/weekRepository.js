@@ -13,7 +13,10 @@ export async function findWeekPlan(userId) {
             (
               SELECT MAX(r.reviewed_at) FROM review_logs r
               WHERE r.topic_id = t.id AND r.user_id = $1
-            ) AS last_reviewed_at
+            ) AS last_reviewed_at,
+            (
+              SELECT COUNT(*)::int FROM tasks k WHERE k.topic_id = t.id
+            ) AS task_count
      FROM categories c
      LEFT JOIN topics t ON t.category_id = c.id AND t.archived_at IS NULL
      WHERE c.archived_at IS NULL

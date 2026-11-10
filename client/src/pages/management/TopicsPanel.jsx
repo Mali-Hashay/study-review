@@ -2,8 +2,15 @@ import { useCallback, useEffect, useState } from 'react'
 import { api } from '../../api/api.js'
 import { ConfirmDialog } from '../../components/ConfirmDialog.jsx'
 import forms from '../../components/forms.module.css'
+import { TasksPanel } from './TasksPanel.jsx'
 import { TopicFormDialog } from './TopicFormDialog.jsx'
 import styles from './TopicsPanel.module.css'
+
+function describeTaskCount(count) {
+  if (count === 0) return 'אין משימות'
+  if (count === 1) return 'משימה אחת'
+  return `${count} משימות`
+}
 
 // The topics of one category, shown when the category is opened.
 // `onChange` lets the parent refresh the topic count after an add or delete.
@@ -15,6 +22,7 @@ export function TopicsPanel({ category, onChange }) {
   // { topic: null | topic } while the form is open
   const [form, setForm] = useState(null)
   const [deleting, setDeleting] = useState(null)
+  const [openTopicId, setOpenTopicId] = useState(null)
 
   const loadTopics = useCallback(() => {
     return api(`/categories/${category.id}/topics`)
@@ -59,16 +67,29 @@ export function TopicsPanel({ category, onChange }) {
       {topics?.length > 0 && (
         <ul className={styles.list}>
           {topics.map((topic) => (
-            <li key={topic.id} className={styles.row}>
-              <span>{topic.name}</span>
-              <div className={styles.actions}>
-                <button type="button" onClick={() => setForm({ topic })}>
-                  עריכה
-                </button>
-                <button type="button" className={styles.deleteButton} onClick={() => setDeleting(topic)}>
-                  מחיקה
-                </button>
+            <li key={topic.id} className={styles.item}>
+              <div className={styles.row}>
+                <div className={styles.name}>
+                  <span>{topic.name}</span>
+                  <button
+                    type="button"
+                    className={styles.tasksToggle}
+                    onClick={() => setOpenTopicId((current) => (current === topic.id ? null : topic.id))}
+                    aria-expanded={openTopicId === topic.id}
+                  >
+                    {describeTaskCount(topic.task_count)} {openTopicId === topic.id ? '▴' : '▾'}
+                  </button>
+                </div>
+                <div className={styles.actions}>
+                  <button type="button" onClick={() => setForm({ topic })}>
+                    עריכה
+                  </button>
+                  <button type="button" className={styles.deleteButton} onClick={() => setDeleting(topic)}>
+                    מחיקה
+                  </button>
+                </div>
               </div>
+              {openTopicId === topic.id && <TasksPanel topic={topic} onChange={loadTopics} />}
             </li>
           ))}
         </ul>
