@@ -10,6 +10,7 @@ import { topicReviewLogsRoutes } from './routes/reviewLogsRoutes.js';
 import { weekRoutes } from './routes/weekRoutes.js';
 import { staleTopicsRoutes } from './routes/staleTopicsRoutes.js';
 import { statsRoutes } from './routes/statsRoutes.js';
+import { archiveRoutes } from './routes/archiveRoutes.js';
 
 export const app = express();
 
@@ -34,6 +35,7 @@ app.use('/api/tasks', tasksRoutes);
 app.use('/api/week', weekRoutes);
 app.use('/api/stale-topics', staleTopicsRoutes);
 app.use('/api/stats', statsRoutes);
+app.use('/api/archive', archiveRoutes);
 
 // Must stay last: they handle whatever the routes above did not
 app.use(notFound);

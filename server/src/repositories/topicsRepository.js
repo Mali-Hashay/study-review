@@ -57,3 +57,35 @@ export async function deleteTopicWithTasks(id) {
     return rows[0];
   });
 }
+
+export async function findArchivedTopics() {
+  const { rows } = await query(
+    `SELECT t.id, t.name, c.name AS category_name,
+            c.archived_at IS NOT NULL AS category_archived
+     FROM topics t
+     JOIN categories c ON c.id = t.category_id
+     WHERE t.archived_at IS NOT NULL
+     ORDER BY t.archived_at DESC`,
+  );
+  return rows;
+}
+
+// A restored topic would stay hidden if its category is still archived
+export async function topicCategoryIsArchived(id) {
+  const { rows } = await query(
+    `SELECT c.archived_at IS NOT NULL AS archived
+     FROM topics t
+     JOIN categories c ON c.id = t.category_id
+     WHERE t.id = $1`,
+    [id],
+  );
+  return rows[0]?.archived ?? false;
+}
+
+export async function restoreTopic(id) {
+  const { rows } = await query(
+    'update topics set archived_at = null where id = $1 and archived_at IS not null returning *',
+    [id],
+  );
+  return rows[0];
+}

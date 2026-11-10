@@ -68,3 +68,18 @@ export async function deleteCategoryWithContent(id) {
     return rows[0];
   });
 }
+
+export async function findArchivedCategories() {
+  const { rows } = await query(
+    'SELECT * FROM categories WHERE archived_at IS NOT NULL ORDER BY archived_at DESC',
+  );
+  return rows;
+}
+
+export async function restoreCategory(id) {
+  const { rows } = await query(
+    'UPDATE categories SET archived_at = NULL WHERE id = $1 AND archived_at IS NOT NULL RETURNING *',
+    [id],
+  );
+  return rows[0];
+}

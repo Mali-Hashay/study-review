@@ -3,6 +3,7 @@ import { api } from '../../api/api.js'
 import { ConfirmDialog } from '../../components/ConfirmDialog.jsx'
 import forms from '../../components/forms.module.css'
 import { DAY_NAMES } from '../../utils/days.js'
+import { ArchiveSection } from './ArchiveSection.jsx'
 import { CategoryFormDialog } from './CategoryFormDialog.jsx'
 import styles from './ManagementPage.module.css'
 import { TopicsPanel } from './TopicsPanel.jsx'
@@ -39,6 +40,14 @@ export function ManagementPage() {
     loadCategories()
   }, [])
 
+  // Changing the key makes ArchiveSection reload (something may have moved in or out of the archive)
+  const [archiveKey, setArchiveKey] = useState(0)
+
+  function refreshAll() {
+    setArchiveKey((key) => key + 1)
+    return loadCategories()
+  }
+
   function openNew(day, dayCategories) {
     setForm({ category: null, defaults: { dayOfWeek: day, orderIndex: dayCategories.length + 1 } })
   }
@@ -57,7 +66,7 @@ export function ManagementPage() {
         : `הקטגוריה "${deleting.name}" נמחקה.`,
     )
     setDeleting(null)
-    await loadCategories()
+    await refreshAll()
   }
 
   return (
@@ -114,7 +123,7 @@ export function ManagementPage() {
                         </div>
                       </div>
                       {openCategoryId === category.id && (
-                        <TopicsPanel category={category} onChange={loadCategories} />
+                        <TopicsPanel category={category} onChange={refreshAll} />
                       )}
                     </li>
                   ))}
@@ -124,6 +133,8 @@ export function ManagementPage() {
           })}
         </div>
       )}
+
+      {categories && <ArchiveSection refreshKey={archiveKey} onRestored={refreshAll} />}
 
       <CategoryFormDialog
         open={Boolean(form)}
