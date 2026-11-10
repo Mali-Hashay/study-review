@@ -47,7 +47,7 @@ export function LoginPage() {
         <header className={styles.header}>
           <h1>Study&amp;Review</h1>
           <p>
-            הדרך שלנו לעבודת החלומות <bdi dir="ltr" className={styles.smile}>:)</bdi>
+            הדרך שלנו לעבודת החלומות <span className={styles.smile}>:)</span>
           </p>
         </header>
 

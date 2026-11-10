@@ -54,8 +54,7 @@ export function WeekPage() {
     <div className={styles.page}>
       <section className={styles.hero}>
         <h1>
-          {/* dir="ltr": in right-to-left text the browser would mirror ":)" into "(:" */}
-          הדרך שלנו לעבודת החלומות <bdi dir="ltr" className={styles.smile}>:)</bdi>
+          הדרך שלנו לעבודת החלומות <span className={styles.smile}>:)</span>
         </h1>
         <QuoteCards />
       </section>
