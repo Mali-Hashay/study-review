@@ -2,7 +2,12 @@ import { query, withTransaction } from '../db/pool.js';
 
 export async function findActiveCategories() {
   const { rows } = await query(
-    'SELECT * FROM categories WHERE archived_at IS NULL ORDER BY day_of_week, order_index',
+    `SELECT c.*, COUNT(t.id)::int AS topic_count
+     FROM categories c
+     LEFT JOIN topics t ON t.category_id = c.id AND t.archived_at IS NULL
+     WHERE c.archived_at IS NULL
+     GROUP BY c.id
+     ORDER BY c.day_of_week, c.order_index`,
   );
   return rows;
 }

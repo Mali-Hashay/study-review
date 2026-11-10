@@ -16,6 +16,9 @@ export function AppLayout() {
           <NavLink to="/progress" className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}>
             התקדמות
           </NavLink>
+          <NavLink to="/management"className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}>
+            ניהול
+          </NavLink>
         </nav>
         <div className={styles.user}>
           <span>{user.name}</span>

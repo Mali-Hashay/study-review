@@ -1,0 +1,151 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 60rem;
+  margin-inline: auto;
+}
+
+/* Two days per row; with dir="rtl", Sunday is on the right */
+.days {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  align-items: start;
+}
+
+@media (max-width: 700px) {
+  .days {
+    grid-template-columns: 1fr;
+  }
+}
+
+.page h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: var(--color-gray-900);
+}
+
+.notice {
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border-inline-start: 4px solid var(--color-accent);
+  background: var(--color-accent-light);
+}
+
+.day {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-gray-100);
+}
+
+.dayHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.dayHeader h2 {
+  font-size: 1.125rem;
+}
+
+.addButton {
+  padding: var(--space-1) var(--space-3);
+  border: none;
+  border-radius: var(--radius);
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  background: var(--color-accent-dark);
+}
+
+.empty {
+  margin: 0;
+  padding: var(--space-3);
+  color: var(--color-gray-600);
+}
+
+.list {
+  margin: 0;
+  padding: var(--space-2);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.list:empty {
+  display: none;
+}
+
+/* Each category is a white card on the gray day background */
+.row {
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-white);
+  border-radius: var(--radius);
+}
+
+.rowMain {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+}
+
+.description {
+  margin: 0;
+  color: var(--color-gray-600);
+  font-size: 0.875rem;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.actions button {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius);
+  background: var(--color-white);
+  cursor: pointer;
+}
+
+.actions button:hover {
+  border-color: var(--color-black);
+}
+
+.actions .deleteButton {
+  color: var(--color-danger);
+}
+
+.actions .deleteButton:hover {
+  border-color: var(--color-danger);
+}
+
+.topicsToggle {
+  margin-block-start: var(--space-2);
+  padding: 0.125rem var(--space-3);
+  border: none;
+  border-radius: 999px;
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.topicsToggle:hover,
+.topicsToggle[aria-expanded='true'] {
+  background: var(--color-accent);
+  color: var(--color-white);
+}

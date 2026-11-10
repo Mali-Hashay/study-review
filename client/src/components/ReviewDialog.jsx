@@ -107,7 +107,7 @@ function ReviewForm({ topic, onClose, onSaved }) {
           ביטול
         </button>
         <button type="submit" className={forms.primary} disabled={saving}>
-          {saving ? 'שומרת...' : 'שמירה'}
+          {saving ? 'שומר...' : 'שמירה'}
         </button>
       </div>
     </form>
