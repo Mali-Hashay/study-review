@@ -7,13 +7,14 @@
 }
 
 .dialog::backdrop {
-  background: rgb(0 0 0 / 0.55);
+  background: rgb(0 0 0 / 0.35);
+  backdrop-filter: blur(4px);
 }
 
 .title {
   margin: 0;
   padding: var(--space-3) var(--space-4);
-  background: var(--gradient-header);
+  background: var(--color-black);
   color: var(--color-white);
   font-size: 1.25rem;
 }

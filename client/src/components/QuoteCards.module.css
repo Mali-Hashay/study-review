@@ -1,7 +1,20 @@
+/* 8 quotes: two even rows of four on a wide screen. The larger row gap leaves room for the round quote mark. */
 .quotes {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-3);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-3);
+}
+
+@media (max-width: 1000px) {
+  .quotes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .quotes {
+    grid-template-columns: 1fr;
+  }
 }
 
 .quote {
@@ -38,7 +51,7 @@
 
 .quote blockquote {
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 700;
   line-height: 1.45;
 }
@@ -53,9 +66,3 @@
   content: '— ';
 }
 
-@media (max-width: 900px) {
-  .quotes {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-  }
-}

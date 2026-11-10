@@ -16,7 +16,7 @@
 }
 
 .header {
-  background: var(--gradient-header);
+  background: var(--color-black);
   color: var(--color-white);
   padding: var(--space-4);
   text-align: center;

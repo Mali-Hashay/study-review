@@ -33,10 +33,12 @@
   background: var(--color-accent-light);
 }
 
+/* One white card per day, with a shadow on the tinted page */
 .day {
   border-radius: var(--radius);
   overflow: hidden;
-  background: var(--color-gray-100);
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
 }
 
 .dayHeader {
@@ -52,18 +54,19 @@
   font-size: 1.125rem;
 }
 
+/* Light gray with turquoise text: visible on the black header without shouting */
 .addButton {
   padding: var(--space-1) var(--space-3);
   border: none;
   border-radius: var(--radius);
-  background: var(--color-accent);
-  color: var(--color-white);
+  background: #cfcfcf;
+  color: #075e55; /* a darker turquoise, so the text stays readable on the gray */
   font-weight: 700;
   cursor: pointer;
 }
 
 .addButton:hover {
-  background: var(--color-accent-dark);
+  background: #bdbdbd;
 }
 
 .empty {
@@ -74,22 +77,20 @@
 
 .list {
   margin: 0;
-  padding: var(--space-2);
+  padding: 0;
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
 }
 
 .list:empty {
   display: none;
 }
 
-/* Each category is a white card on the gray day background */
 .row {
-  padding: var(--space-2) var(--space-3);
-  background: var(--color-white);
-  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+
+.row + .row {
+  border-block-start: 1px solid var(--color-gray-100);
 }
 
 .rowMain {

@@ -1,16 +1,30 @@
+/* A white card like the others on the page */
 .archive {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  padding: var(--space-3);
-  border: 1px dashed var(--color-gray-300);
+  padding: var(--space-3) var(--space-4);
   border-radius: var(--radius);
-  color: var(--color-gray-600);
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
 }
 
+/* Same heading style as the progress screen: a short turquoise bar before the text */
 .archive h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   font-size: 1.25rem;
+  font-weight: 800;
   color: var(--color-gray-900);
+}
+
+.archive h2::before {
+  content: '';
+  width: 6px;
+  height: 1.3em;
+  border-radius: 3px;
+  background: var(--color-accent);
 }
 
 .archive h3 {

@@ -10,8 +10,10 @@
   --color-accent-dark: #0b7a6f;
   --color-accent-light: #e0f5f2;
   --color-danger: #c62828;
+  --color-page-tint: var(--color-gray-100); /* same gray as the quote cards; was #f6f7f7 */
 
-  --gradient-header: linear-gradient(to left, #000000, #4a4a4a);
+  --shadow-card: 0 1px 3px rgb(0 0 0 / 0.08), 0 4px 14px rgb(0 0 0 / 0.06);
+
 
   --font-family: 'Heebo', system-ui, sans-serif;
   --radius: 6px;

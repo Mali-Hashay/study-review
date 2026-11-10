@@ -4,6 +4,10 @@
   flex-direction: column;
 }
 
+.tinted {
+  background: var(--color-page-tint);
+}
+
 .header {
   display: flex;
   align-items: center;
